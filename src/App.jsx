@@ -36,7 +36,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/buypage" element={<BuyPage />} />
         <Route path="/vendor" element={<VendorApp />} />
