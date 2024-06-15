@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import image1 from './assets/images/img1.jpeg';
 import image2 from './assets/images/img2.jpeg';
+import Navbar from './components/Navbar';
 
 const Homepage = () => {
     const settings = {
@@ -17,6 +18,8 @@ const Homepage = () => {
     };
 
     return (
+        <>
+        <Navbar/>
         <div>
             {/* Scrolling Image Section */}
             <section className="overflow-x-hidden">
@@ -136,6 +139,7 @@ const Homepage = () => {
                 </p>
             </footer>
         </div>
+        </>
     );
 };
 
