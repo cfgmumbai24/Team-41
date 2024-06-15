@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { BiMaleFemale } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
@@ -5,12 +6,22 @@ import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import { BarChart, DoughnutChart } from "../../components/admin/Charts";
 import Table from "../../components/admin/DashboardTable";
-import data from "../../assets/data.json"
+import data from "../../assets/data.json";
 
 const userImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp";
 
 const Dashboard = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleViewClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleCloseClick = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <div className="admin-container">
       <AdminSidebar />
@@ -42,7 +53,6 @@ const Dashboard = () => {
             color="rgb(255 196 0)"
             heading="Transactions"
           />
-
           <WidgetItem
             percent={30}
             value={1000}
@@ -52,31 +62,18 @@ const Dashboard = () => {
         </section>
 
         <section className="graph-container">
-          <div className="revenue-chart">
-            <h2>Revenue & Transaction</h2>
-            <BarChart
-              data_2={[300, 144, 433, 655, 237, 755, 190]}
-              data_1={[200, 444, 343, 556, 778, 455, 990]}
-              title_1="Revenue"
-              title_2="Transaction"
-              bgColor_1="rgb(0, 115, 255)"
-              bgColor_2="rgba(53, 162, 235, 0.8)"
-            />
-          </div>
-
           <div className="dashboard-categories">
             <h2>Inventory</h2>
-
-            {/* <div>
-              {data.categories.map((i) => (
-                <CategoryItem
-                  key={i.heading}
-                  value={i.value}
-                  heading={i.heading}
-                  color={`hsl(${i.value * 4}, ${i.value}%, 50%)`}
-                />
+            <div className="list">
+              {data.categories.map((item) => (
+                <div className="list-item" key={item.heading}>
+                  <span>{item.heading}</span>
+                  <button className="button" onClick={handleViewClick}>
+                    View
+                  </button>
+                </div>
               ))}
-            </div> */}
+            </div>
           </div>
         </section>
 
@@ -98,6 +95,24 @@ const Dashboard = () => {
           </div>
           <Table data={data.transaction} />
         </section>
+
+        {isPopupOpen && (
+          <>
+            <div className="popup">
+              <button className="close-button" onClick={handleCloseClick}>
+                &times;
+              </button>
+              <div className="content">
+                {/* Empty content */}
+                <div className="buttons">
+                  <button className="accept-button" onClick={handleCloseClick}>Accept</button>
+                  <button className="decline-button" onClick={handleCloseClick}>Decline</button>
+                </div>
+              </div>
+            </div>
+            <div className="overlay" onClick={handleCloseClick} />
+          </>
+        )}
       </main>
     </div>
   );
@@ -153,25 +168,7 @@ const WidgetItem = ({
   </article>
 );
 
-interface CategoryItemProps {
-  color: string;
-  value: number;
-  heading: string;
-}
-
-const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
-  <div className="category-item">
-    <h5>{heading}</h5>
-    <div>
-      <div
-        style={{
-          backgroundColor: color,
-          width: `${value}%`,
-        }}
-      ></div>
-    </div>
-    <span>{value}%</span>
-  </div>
-);
-
 export default Dashboard;
+
+
+
