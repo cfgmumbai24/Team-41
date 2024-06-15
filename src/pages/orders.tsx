@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Header from "../components/header";
 
 const Orders = () => {
   return (
-    <div>Orders</div>
-  )
-}
+    <div>
+      <Header />
+      <div>Orders</div>
+    </div>
+  );
+};
 
-export default Orders
+export default Orders;

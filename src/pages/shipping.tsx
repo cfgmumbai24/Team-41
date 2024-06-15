@@ -1,6 +1,8 @@
+import React from "react";
 import { ChangeEvent,useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/header";
 
 
 const Shipping = () => {
@@ -24,6 +26,8 @@ const Shipping = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="shipping">
       <button className="back-btn" onClick={() => navigate("/cart")}>
         <BiArrowBack />
@@ -81,6 +85,7 @@ const Shipping = () => {
         <button type="submit">Pay Now</button>
       </form>
     </div>
+    </>
   );
 };
 

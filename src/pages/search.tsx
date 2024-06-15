@@ -1,5 +1,7 @@
 import { useState } from "react";
 import ProductCard from "../components/product-card";
+import React from "react";
+import Header from "../components/header";
 
 const Search = () => {
  
@@ -14,6 +16,8 @@ const Search = () => {
   const isPrevPage = page > 1;
   const isNextPage = page < 4;
   return (
+    <>
+    <Header />
     <div className="product-search-page">
       <aside>
         <h2>Filters</h2>
@@ -77,6 +81,7 @@ const Search = () => {
       </article>
       </main>
     </div>
+    </>
   );
 };
 
