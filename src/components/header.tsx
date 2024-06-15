@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 
 import "../styles/app.scss";
+import React from "react";
 
 const user = { _id: "njsdhf", role: "admin" };
 
