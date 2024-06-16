@@ -21,6 +21,7 @@ const Homepage = () => {
         <>
         <Navbar/>
         <div>
+            <Navbar />
             {/* Scrolling Image Section */}
             <section className="overflow-x-hidden">
                 <Slider {...settings}>
