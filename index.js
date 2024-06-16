@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import routes2 from "./routes/adminroutes.js";
 import router from "./routes/form.js";
+import router3 from "./routes/mapRoutes.js";
 const port = 8000;
 const app = express();
 dotenv.config();
@@ -14,7 +15,8 @@ app.get('/',(req,res)=>{
 });
 app.use(express.json({extended:false}));
 app.use('/api/users',routes2);
-app.use('/api/forms',router);
+app.use('/api/users',router);
+app.use('/api/volunteer',router3);
 app.listen(port,()=>{
     console.log("Port is running on",port);
 });
